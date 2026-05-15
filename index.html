@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP 定位查詢工具 - 專業版</title>
+    <meta name="description" content="快速查詢多個 IP 地址的地理位置與所屬國家，支援繁體中文輸出。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <main class="app-container">
+        <header class="app-header">
+            <h1>IP <span class="accent">定位查詢</span></h1>
+            <p>輸入 IP 地址列表，即時獲取所屬國家資訊</p>
+        </header>
+
+        <section class="tool-grid">
+            <div class="panel input-panel">
+                <div class="panel-header">
+                    <label for="ipInput">輸入 IP 地址 (每行一個)</label>
+                    <span id="ipCount">0 個 IP</span>
+                </div>
+                <div class="textarea-wrapper">
+                    <textarea id="ipInput" placeholder="例如:
+8.8.8.8
+1.1.1.1
+220.132.28.0/24" spellcheck="false"></textarea>
+                </div>
+                <div class="controls">
+                    <button id="clearBtn" class="btn btn-secondary">清空內容</button>
+                    <button id="analyzeBtn" class="btn btn-primary">開始查詢</button>
+                </div>
+            </div>
+
+            <div class="panel output-panel">
+                <div class="panel-header">
+                    <span>查詢結果</span>
+                    <button id="copyBtn" class="btn btn-small" title="複製結果">
+                        <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                        複製結果
+                    </button>
+                </div>
+                <div id="resultsList" class="results-container">
+                    <div class="empty-state">
+                        <svg viewBox="0 0 24 24" width="48" height="48" opacity="0.3"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z"/></svg>
+                        <p>等待輸入並執行查詢...</p>
+                    </div>
+                </div>
+                <div id="statusInfo" class="status-info hidden">
+                    <span id="progressText">處理中: 0%</span>
+                    <div class="progress-bar"><div id="progressFill"></div></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2026 IP Location Pro. 數據來源: ip-api.com</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
